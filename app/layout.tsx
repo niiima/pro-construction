@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";   // ← Add this
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 // import { Toaster } from "@/components/ui/toaster"; // optional, if you use toast
@@ -28,10 +29,18 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      ><Header />
-        <main>{children}</main>
-        {/* <Toaster /> */}
-        <Footer />
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <main>{children}</main>
+          {/* <Toaster /> */}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

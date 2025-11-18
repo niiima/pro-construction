@@ -7,6 +7,7 @@ import MobileMenu from "./MobileMenu";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/logo-bright.svg";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
     { label: "Home", href: "#" },
@@ -19,7 +20,11 @@ const navItems = [
 
 export default function Header() {
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+        <header className="sticky top-0 z-50 w-full border-b 
+  bg-white/95 dark:bg-black/95 
+  backdrop-blur supports-[backdrop-filter]:bg-white/60 
+  supports-[backdrop-filter]:dark:bg-black/60
+  transition-colors">
             <div className="container mx-auto flex h-20 items-center justify-between px-4">
                 <Link href="/" className="text-2xl font-bold text-primary">
                     {/* PRO LONDON */}
@@ -37,7 +42,8 @@ export default function Header() {
                         <Link
                             key={item.label}
                             href={item.href}
-                            className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                            className="text-muted-foreground hover:text-primary transition-colors font-medium
+                 dark:text-gray-300 dark:hover:text-white"  // ← This fixes dark mode
                         >
                             {item.label}
                         </Link>
@@ -46,7 +52,7 @@ export default function Header() {
                         <Link href="tel:02012345678">07950 611430</Link>
                     </Button>
                 </nav>
-
+                <ThemeToggle />
                 {/* Mobile Menu */}
                 {/* Mobile Menu Trigger */}
                 <Sheet>
