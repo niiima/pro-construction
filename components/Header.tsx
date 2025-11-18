@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetOverlay, SheetClose } from "@/components/ui/sheet";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
-import Image from "next/image"
-// import logo from "./logo-bright.svg"
+import Image from "next/image";
+import logo from "@/public/logo-bright.svg";
 
 const navItems = [
     { label: "Home", href: "#" },
@@ -24,11 +24,10 @@ export default function Header() {
                 <Link href="/" className="text-2xl font-bold text-primary">
                     {/* PRO LONDON */}
                     <Image
-                        src="/logo-bright.svg"      // note the leading slash
-                        alt="Pro London Logo"
-                        width={120}
-                        height={40}
-                        className="h-10 w-auto"
+                        src={logo}
+                        alt="Pro London Construction Logo"
+                        className="h-9 w-auto max-w-none md:h-10 lg:h-11"
+                        priority
                     />
                 </Link>
 
