@@ -1,8 +1,8 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetOverlay } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetOverlay, SheetClose } from "@/components/ui/sheet";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
 import Image from "next/image"
@@ -58,16 +58,22 @@ export default function Header() {
 
                     <SheetContent
                         side="right"
-                        className="w-[300px] sm:w-[400px] flex flex-col p-0"
+                        className="w-[300px] sm:w-[400px] p-0 flex flex-col"
                     >
-                        {/* Custom overlay with dark backdrop */}
-                        <SheetOverlay className="bg-black/80" />
+                        {/* Custom dark overlay - CORRECT WAY */}
+                        <div className="fixed inset-0 bg-black/80 z-40" />
+
+                        {/* Close button (top-right X) */}
+                        <SheetClose className="absolute right-4 top-4 z-50 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none">
+                            <X className="h-6 w-6" />
+                            <span className="sr-only">Close</span>
+                        </SheetClose>
 
                         {/* Scrollable content */}
-                        <div className="flex-1 overflow-y-auto">
-                            {/* Optional: Logo at top */}
-                            <div className="p-6 border-b">
-                                <Link href="/" className="flex items-center gap-3">
+                        <div className="relative z-50 flex-1 overflow-y-auto">
+                            {/* Logo Header */}
+                            <div className="p-6 border-b bg-background">
+                                <Link href="/" className="flex items-center gap-3" onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }))}>
                                     <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center font-bold text-black text-xl">
                                         PL
                                     </div>
@@ -78,7 +84,8 @@ export default function Header() {
                                 </Link>
                             </div>
 
-                            <div className="px-6 pt-6">
+                            {/* Menu */}
+                            <div className="px-6 py-6">
                                 <MobileMenu />
                             </div>
                         </div>
