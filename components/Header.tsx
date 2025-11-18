@@ -26,7 +26,7 @@ export default function Header() {
                     <Image
                         src="/logo-bright.svg"      // note the leading slash
                         alt="Pro London Logo"
-                        width={120}
+                        width={110}
                         height={40}
                         className="h-10 w-auto"
                     />
