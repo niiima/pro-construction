@@ -2,7 +2,7 @@
 
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetOverlay } from "@/components/ui/sheet";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
 import Image from "next/image"
@@ -56,16 +56,31 @@ export default function Header() {
                         </Button>
                     </SheetTrigger>
 
-                    {/* ← ADD THESE CLASSES BELOW → */}
                     <SheetContent
                         side="right"
-                        className="w-[300px] sm:w-[400px] flex flex-col"
-                        // This is the magic fix:
-                        overlayClassName="bg-black/80"
+                        className="w-[300px] sm:w-[400px] flex flex-col p-0"
                     >
-                        {/* This div makes the content scrollable */}
-                        <div className="flex-1 overflow-y-auto py-6">
-                            <MobileMenu />
+                        {/* Custom overlay with dark backdrop */}
+                        <SheetOverlay className="bg-black/80" />
+
+                        {/* Scrollable content */}
+                        <div className="flex-1 overflow-y-auto">
+                            {/* Optional: Logo at top */}
+                            <div className="p-6 border-b">
+                                <Link href="/" className="flex items-center gap-3">
+                                    <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center font-bold text-black text-xl">
+                                        PL
+                                    </div>
+                                    <div>
+                                        <h2 className="text-xl font-bold">PRO LONDON</h2>
+                                        <p className="text-sm text-muted-foreground">CONSTRUCTION</p>
+                                    </div>
+                                </Link>
+                            </div>
+
+                            <div className="px-6 pt-6">
+                                <MobileMenu />
+                            </div>
                         </div>
                     </SheetContent>
                 </Sheet>
