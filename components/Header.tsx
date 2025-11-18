@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
+import Image from "next/image"
+// import logo from "./logo-bright.svg"
 
 const navItems = [
     { label: "Home", href: "#" },
@@ -21,6 +23,13 @@ export default function Header() {
             <div className="container mx-auto flex h-20 items-center justify-between px-4">
                 <Link href="/" className="text-2xl font-bold text-primary">
                     PRO LONDON
+                    <Image
+                        src="/logo-bright.svg"      // note the leading slash
+                        alt="Pro London Logo"
+                        width={120}
+                        height={40}
+                        className="h-10 w-auto"
+                    />
                 </Link>
 
                 {/* Desktop Nav */}

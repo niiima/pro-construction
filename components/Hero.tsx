@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
 export default function Hero() {
     return (
         <section className="relative h-screen flex items-center justify-center bg-[url('/hero.jpg')] bg-cover bg-center">
