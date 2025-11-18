@@ -73,7 +73,7 @@ export default function ContactForm() {
 
                 <div className="mt-12 text-2xl">
                     <p>Or call us directly:</p>
-                    <a href="tel:02012345678" className="text-4xl font-bold underline">020 1234 5678</a>
+                    <a href="tel:02012345678" className="text-4xl font-bold underline">07950 611430</a>
                 </div>
             </div>
         </section>
