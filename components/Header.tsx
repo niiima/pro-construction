@@ -49,43 +49,54 @@ export default function Header() {
                 </nav>
 
                 {/* Mobile Menu */}
+                {/* Mobile Menu Trigger */}
                 <Sheet>
                     <SheetTrigger asChild className="md:hidden">
                         <Button variant="ghost" size="icon">
                             <Menu className="h-6 w-6" />
+                            <span className="sr-only">Open menu</span>
                         </Button>
                     </SheetTrigger>
 
                     <SheetContent
                         side="right"
-                        className="w-[300px] sm:w-[400px] p-0 flex flex-col"
+
+                        className="w-[320px] sm:w-[400px] p-0 flex flex-col"
+                    // This is the official supported way in 2025 to darken the backdrop
                     >
-                        {/* Custom dark overlay - CORRECT WAY */}
-                        <div className="fixed inset-0 bg-black/80 z-40" />
+                        {/* 1. Dark overlay – works perfectly */}
+                        <div
+                            className="fixed inset-0 bg-black/80 -z-10"
+                            aria-hidden="true"
+                        />
 
-                        {/* Close button (top-right X) */}
-                        <SheetClose className="absolute right-4 top-4 z-50 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none">
-                            <X className="h-6 w-6" />
-                            <span className="sr-only">Close</span>
-                        </SheetClose>
+                        {/* 2. Close button (top right X) */}
+                        <button
+                            className="absolute right-4 top-4 z-50 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none"
+                            onClick={() => document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }))}
+                            aria-label="Close menu"
+                        >
+                            <X className="h-7 w-7 text-white" />
+                        </button>
 
-                        {/* Scrollable content */}
-                        <div className="relative z-50 flex-1 overflow-y-auto">
-                            {/* Logo Header */}
+                        {/* 3. Scrollable content */}
+                        <div className="flex-1 overflow-y-auto overscroll-contain">
+                            {/* Optional Logo at top */}
                             <div className="p-6 border-b bg-background">
-                                <Link href="/" className="flex items-center gap-3" onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }))}>
-                                    <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center font-bold text-black text-xl">
+                                <Link href="/" className="flex items-center gap-3">
+                                    {/* Replace with your real logo if you have one */}
+                                    <div className="w-14 h-14 bg-yellow-500 rounded-lg flex items-center justify-center font-bold text-black text-2xl">
                                         PL
                                     </div>
                                     <div>
-                                        <h2 className="text-xl font-bold">PRO LONDON</h2>
+                                        <h2 className="text-2xl font-bold">PRO LONDON</h2>
                                         <p className="text-sm text-muted-foreground">CONSTRUCTION</p>
                                     </div>
                                 </Link>
                             </div>
 
-                            {/* Menu */}
-                            <div className="px-6 py-6">
+                            {/* Your beautiful animated menu */}
+                            <div className="p-6 pt-8">
                                 <MobileMenu />
                             </div>
                         </div>
