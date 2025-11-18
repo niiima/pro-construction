@@ -22,11 +22,11 @@ export default function Header() {
         <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
             <div className="container mx-auto flex h-20 items-center justify-between px-4">
                 <Link href="/" className="text-2xl font-bold text-primary">
-                    PRO LONDON
+                    {/* PRO LONDON */}
                     <Image
                         src="/logo-bright.svg"      // note the leading slash
                         alt="Pro London Logo"
-                        width={110}
+                        width={120}
                         height={40}
                         className="h-10 w-auto"
                     />
