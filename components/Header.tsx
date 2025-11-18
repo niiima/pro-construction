@@ -55,9 +55,18 @@ export default function Header() {
                             <Menu className="h-6 w-6" />
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                        <MobileMenu />
-                        {/* items={navItems}  */}
+
+                    {/* ← ADD THESE CLASSES BELOW → */}
+                    <SheetContent
+                        side="right"
+                        className="w-[300px] sm:w-[400px] flex flex-col"
+                        // This is the magic fix:
+                        overlayClassName="bg-black/80"
+                    >
+                        {/* This div makes the content scrollable */}
+                        <div className="flex-1 overflow-y-auto py-6">
+                            <MobileMenu />
+                        </div>
                     </SheetContent>
                 </Sheet>
             </div>
