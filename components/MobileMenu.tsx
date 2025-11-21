@@ -8,7 +8,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const services = [
-    "Renovation & Refurbishment",
+    "Renovation And Refurbishment",
     "Painting & Decoration",
     "Electrical Services",
     "Plumbing Services",
