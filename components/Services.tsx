@@ -82,7 +82,6 @@ export default function Services() {
                                         </p>
                                     </div>
 
-                                    {/* Bottom yellow/orange line */}
                                     <motion.div
                                         className="absolute bottom-0 left-0 h-1  bg-yellow-500"
                                         initial={{ width: 0 }}
